@@ -1,0 +1,42 @@
+import java.util.*; 
+
+public class Runner 
+{
+
+    public static void main(String[] args) 
+    {
+        Scanner sr = new Scanner(System.in);
+        String expression = sr.next();
+        System.out.println(isBalanced(expression));
+    }
+
+    public static boolean isBalanced(String expression) {
+       if(expression.length()%2!=0)
+       {
+           return false;
+       }
+       Stack <Character>ans=new Stack<>();
+       for(int i=0;i<expression.length();i++)
+       {
+           if(expression.charAt(i)=='(')
+           {
+               ans.push(expression.charAt(i));
+           }
+           else
+           {
+               if(!ans.isEmpty())
+               {
+                   ans.pop();
+               }
+               else
+               {
+               return false;
+               }
+           }
+       }
+       if(ans.size()==0)
+       return true;
+       else
+       return false;
+    }
+}
