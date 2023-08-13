@@ -1,0 +1,63 @@
+import java.util.*;
+
+public class Runner 
+{
+
+    public static int[] takeInput() 
+    {
+        Scanner sr = new Scanner(System.in);
+    	int size = sr.nextInt();
+    	int[] input = new int[size];
+
+    	if (size == 0) 
+    	{
+    		return input;
+    	}
+    	for(int i = 0; i < size; i++) 
+    	{
+    		input[i] = sr.nextInt();
+    	}
+
+    	return input;
+    }
+
+    public static void printArray(int[] arr) 
+    {
+    	for (int i = 0 ; i < arr.length; i++) 
+    	{
+    		System.out.print(arr[i] + " ");
+    	}
+
+    	System.out.println();
+    }
+
+    public static void main(String[] args)
+    {
+    	int[] input = takeInput();
+
+    	int[] output = stockSpan(input);
+
+    	printArray(output);
+
+    }
+	public static int[] stockSpan(int[] price)
+	 {
+		 int [] arr=new int[price.length];
+		 arr[0]=1;
+		 int j=1;
+		for(int i=0;i<arr.length-1;i++)
+		{
+			int k=i;
+			int count=1;
+			
+          while(k!=-1&&price[j]>price[k])
+		  {
+			  count++;
+			  k--;
+		  }
+		  arr[j]=count;
+		  j++;
+		}
+		return arr;
+	}
+}
