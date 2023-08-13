@@ -1,0 +1,53 @@
+import java.util.*;
+
+public class Runner 
+{
+
+    public static Stack<Integer> takeInput() 
+    {
+        Scanner sr = new Scanner(System.in);
+        
+    	int size = sr.nextInt();
+    	Stack<Integer> input = new Stack<>();
+
+    	if (size == 0) 
+    	{
+    		return input;
+    	}
+
+    	for(int i = 0; i < size; i++) 
+    	{
+    	    int var = sr.nextInt();
+    		input.push(var);
+    	}
+
+    	return input;
+    }
+
+    public static void main(String[] args) 
+    {
+    	Stack<Integer> input = takeInput();
+    	Stack<Integer> empty = new Stack<>();
+
+    	Solution.reverseStack(input, empty);
+
+    	while(!input.isEmpty()) 
+    	{
+    		System.out.print(input.pop() + " ");
+    	}
+
+    }
+  public static void reverseStack(Stack<Integer> input, Stack<Integer> extra) {
+		Stack<Integer>stack=input;
+		while(!stack.isEmpty())
+		{
+          int a=  stack.pop();
+		  extra.push(a);
+		}
+		while(!extra.isEmpty())
+		{
+         System.out.print(extra.pop()+" ");
+		}
+
+	}
+}
